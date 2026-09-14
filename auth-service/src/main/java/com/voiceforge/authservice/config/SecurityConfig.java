@@ -1,5 +1,8 @@
-package com.voiceforge.authservice.security;
+package com.voiceforge.authservice.config;
 
+import com.voiceforge.authservice.security.CustomUserDetailsService;
+import com.voiceforge.authservice.security.GoogleOAuthSuccessHandler;
+import com.voiceforge.authservice.security.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
