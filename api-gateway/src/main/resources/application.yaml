@@ -18,6 +18,7 @@ spring:
           '[/**]':
             allowedOrigins:
               - "http://localhost:5173"
+              - "https://voiceforge-ai-frontend.vercel.app"
             allowedMethods:
               - GET
               - POST
