@@ -31,8 +31,7 @@ public class GoogleOAuthSuccessHandler implements AuthenticationSuccessHandler {
         );
 
         response.sendRedirect(
-                "http://localhost:5173/oauth2/success?token="
-                        + token
+                "https://voiceforge-ai-frontend.vercel.app/oauth2/success?token=" + token
         );
     }
 }
