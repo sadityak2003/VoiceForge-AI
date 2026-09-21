@@ -1,0 +1,43 @@
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port}
+
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+
+
+        # ==========================
+        # Swagger Routes
+        # ==========================
+
+        - id: auth-swagger
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/auth-service/api-docs
+          filters:
+            - RewritePath=/auth-service/(?<segment>.*), /${segment}
+
+        - id: user-swagger
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/api-docs
+          filters:
+            - RewritePath=/user-service/(?<segment>.*), /${segment}
+
+        - id: voice-swagger
+          uri: lb://VOICE-SERVICE
+          predicates:
+            - Path=/voice-service/api-docs
+          filters:
+            - RewritePath=/voice-service/(?<segment>.*), /${segment}
+
+        - id: history-swagger
+          uri: lb://HISTORY-SERVICE
+          predicates:
+            - Path=/history-service/api-docs
+          filters:
+            - RewritePath=/history-service/(?<segment>.*), /${segment}
