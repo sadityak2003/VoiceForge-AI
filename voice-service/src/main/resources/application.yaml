@@ -23,6 +23,9 @@ elevenlabs:
   api-key: ${ELEVENLABS_API_KEY}
   base-url: ${BASE_URL}
 
+audio:
+  base-url: ${AUDIO_BASE_URL:http://localhost:8083}
+
 springdoc:
   api-docs:
     path: /api-docs

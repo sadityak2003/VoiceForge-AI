@@ -13,6 +13,7 @@ import com.voiceforge.voice_service.security.JwtService;
 import com.voiceforge.voice_service.service.ElevenLabsService;
 import com.voiceforge.voice_service.service.VoiceService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -31,6 +32,9 @@ public class VoiceServiceImpl implements VoiceService {
     private final UserServiceClient userServiceClient;
     private final HistoryServiceClient historyServiceClient;
     private final JwtService jwtService;
+
+    @Value("${audio.base-url}")
+    private String audioBaseUrl;
 
     private static final Logger log = LoggerFactory.getLogger(VoiceServiceImpl.class);
 
@@ -93,7 +97,7 @@ public class VoiceServiceImpl implements VoiceService {
 
         Files.write(path, audio);
 
-        String audioUrl = "http://localhost:8083/audio/" + fileName;
+        String audioUrl = audioBaseUrl + "/audio/" + fileName;
 
         log.info("Audio file saved successfully at {}", audioUrl);
 
